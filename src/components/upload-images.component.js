@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import UploadService from "../services/upload-files.service";
 import LinearProgress from '@mui/material/LinearProgress';
 import { Box, Typography, Button, ListItem } from '@mui/material';
-
+import CardMedia from '@mui/material/CardMedia'
 
 export default class UploadImages extends Component {
     constructor(props) {
@@ -40,7 +40,7 @@ export default class UploadImages extends Component {
         } = this.state;
 
         return (
-            <div className="mg20">
+            <div className="rq-upload">
                 <label htmlFor="btn-upload">
                     <input
                         id="btn-upload"
@@ -79,18 +79,24 @@ export default class UploadImages extends Component {
                     </Box>)
                 }
                 {previewImage && (
-                    <div>
-                        <img className="preview my20" src={previewImage} alt="" />
-                    </div>
+                    <CardMedia
+                    component="img"
+                    height="194"
+                    image={previewImage}
+                    alt="Paella dish"
+                  />
                 )}
                 {message && (
                     <Typography variant="subtitle2" className={`upload-message ${isError ? "error" : ""}`}>
                         {message}
                     </Typography>
                 )}
+                <div>
                 <Typography variant="h6" className="list-header">
                     List of Images
                 </Typography>
+                </div>
+                <div>
                 <ul className="list-group">
                     {imageInfos &&
                         imageInfos.map((image, index) => (
@@ -102,6 +108,7 @@ export default class UploadImages extends Component {
                             </ListItem>
                         ))}
                 </ul>
+                </div>
             </div >
         );
     }
