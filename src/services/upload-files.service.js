@@ -8,7 +8,7 @@ class UploadFilesService {
                 "Content-Type": "multipart/form-data",
             },
             onUploadProgress,
-        });
+        }); 
     }
     getFiles() {
         return http.get("/files");
